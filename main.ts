@@ -11,16 +11,16 @@ import { dirname } from "node:path";
 
 const OUTPUT_PATH = "/output/entry.txt";
 
-// Setup: one careless click, addressed to the whole company.
-const setup =
-  "I hit Reply All to beg everyone to stop hitting Reply All";
-
-// Punchline: the thread snowballs, and Legal rebrands the chaos.
-const punchline =
-  "214 people replied to agree, and Legal declared it our best-attended meeting of the year.";
+// The joke, in beats: one careless click, a thread that proves
+// its own point, and Legal rebranding the chaos as attendance.
+const beats = [
+  "I hit Reply All to beg 214 colleagues to stop hitting Reply All",
+  "all 214 replied to agree, two of them from annual leave",
+  "and Legal minuted it as our best-attended meeting of the year.",
+];
 
 function buildJoke(): string {
-  const line = `${setup} — ${punchline}`;
+  const line = beats.join(" — " );
   // Guard the competition gate: one line, 1–200 characters.
   if (line.includes("\n") || line.length < 1 || line.length > 200) {
     throw new Error(`joke must be a single line of 1-200 chars, got ${line.length}`);
